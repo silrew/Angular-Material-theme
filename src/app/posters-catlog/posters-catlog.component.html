@@ -1,0 +1,28 @@
+<div class="container">
+<div class="header">
+    <mat-form-field appearance="fill">
+        <div class="search-field">
+            <input matInput (input)="onSearch($event.target.value)" placeholder="Search">
+            <mat-icon>search</mat-icon>
+        </div>
+    </mat-form-field>
+
+    <div class="category" *ngIf="category">
+    <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+            <div class="search-field">
+                <input matInput  value="{{category}}" readonly  style="text-transform: capitalize; font-weight:bold;" >
+                 </div>
+        </mat-form-field>
+    </div>
+</div>
+    <div class="row">
+        <div class="col" *ngFor="let poster of posters">
+            <a [routerLink]="['/poster',poster.id]">
+            <div class="img-zoom">
+                <img [src]="poster.url">
+                <div class="img-text">{{poster.category}}-CID-{{poster.id}}</div>
+            </div></a>
+        </div>
+
+    </div>

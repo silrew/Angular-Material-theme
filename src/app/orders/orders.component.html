@@ -1,0 +1,172 @@
+<div class="container">
+<div class="filter-container">
+  <div class="filters">
+
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <div class="input-filter">
+        <input matInput (keyup)="applyFilter($event.target.value)" >
+        <mat-icon>search</mat-icon>
+      </div>
+
+    </mat-form-field>
+    <div class="selected-filters" *ngFor="let filter of selectedFilters">
+      <div class="close-button">
+        <button  class="btn-close" (click)="onClose(filter)" mat-flat-button>X</button>
+      </div>
+      <mat-form-field style="margin-top:7px;">
+        <mat-label>{{filter}}</mat-label>
+        <div class="input-filter">
+         
+          <input matInput (keyup)="applyFilter($event.target.value)" (focus)="setupFilter(filter)" 
+         [matTooltip]="filter == 'Passed before'? 'Enter date in mm/dd/yyyy format': null"
+          >
+          <div *ngIf="filter == 'Customer'" class="tooltip" matTooltip="Enter Customer Name"></div>
+          <div *ngIf="filter == 'Min amount'" class="tooltip" matTooltip="Enter Amount"></div>
+          </div>  
+       
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="filter-picker-selection">
+    <button mat-flat-button>Add Filters</button>
+    <mat-form-field >
+      <mat-select #selectFilter (selectionChange)="onSelect($event,selectFilter.value)">
+        <mat-option *ngFor="let filter of filterOptions" [value]="filter.value" >
+          {{filter.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div class="table-container" class="mat-elevation-z8">
+
+  <mat-tab-group>
+    
+    <mat-tab label="Orders">
+        <div *ngIf="showdelteIcon && selection.selected.length > 0" class="delete-row">
+            <span class="num-rows">
+                {{selection.selected.length}} Item Selected
+            </span>
+            <span class="delete-icon">
+                <button mat-fab (click)="onDeletRow()">
+                    <mat-icon class="delete-icon" color="warn">delete</mat-icon>
+                  </button>
+            </span>
+          </div>
+          <div class="orders">   
+            <div  matTooltip ="Element has been updated"
+            #tooltip="matTooltip"></div> 
+      <mat-table matSort [dataSource]="dataSource" >
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()"
+              [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="onChecked(row)" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+              [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+
+        
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="reference">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Reference </th>
+          <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="customer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
+          <td mat-cell *matCellDef="let element"> {{element.person.first_name}} {{element.person.last_name}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="NB_items">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NB </th>
+          <td mat-cell *matCellDef="let element"> {{element.NB_items}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+          <td mat-cell *matCellDef="let element"> {{element.total | currency}}  </td>
+        </ng-container>
+
+          
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </mat-table>
+    
+    </div>
+    </mat-tab>
+    <mat-tab label="Delivered"> 
+      <div class="delivered">
+      <mat-table matSort [dataSource]="dataSource2" >
+        
+        <!-- Position Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="reference">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Reference </th>
+          <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="customer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
+          <td mat-cell *matCellDef="let element"> {{element.customer}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="NB_items">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NB </th>
+          <td mat-cell *matCellDef="let element"> {{element.NB_items}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+          <td mat-cell *matCellDef="let element"> {{element.total | currency}}  </td>
+        </ng-container>
+
+        <ng-container matColumnDef="returned">
+          <th mat-header-cell *matHeaderCellDef> Returned </th>
+          <td mat-cell *matCellDef="let element"> <mat-icon *ngIf="element.person.order.returned">check</mat-icon> <mat-icon *ngIf="!element.person.order.returned">cancel</mat-icon>  </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef > </th>
+          <td mat-cell *matCellDef="let element"> <div class="edit-icon">
+           <a [routerLink]="['/personal-info', element.id]">
+            <button mat-flat-button><mat-icon color="primary">edit</mat-icon></button>
+            <span class="text">EDIT </span> 
+           </a> 
+          </div></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+      </mat-table>
+    </div>
+    </mat-tab>
+    
+  </mat-tab-group>
+  <mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = $event">
+</mat-paginator>
+</div>
+</div>   

@@ -1,0 +1,110 @@
+<div class="user-details">
+    <div class="personal-info">
+
+        <mat-card>
+            <form (ngSubmit)="onSubmit(heroForm.form.value)" #heroForm="ngForm">
+                <h3>Identity</h3>
+                <div class="stats">
+                    <div class="first-name">
+                        <mat-form-field appearance="fill">
+                            <mat-label>First Name</mat-label>
+                            <div class="input-filter">
+                                <input matInput name="name" [value]="user.person.first_name" required [(ngModel)]="user.person.first_name" #name="ngModel">
+                            </div>
+                        </mat-form-field>
+                        <div [hidden]="name.valid || name.pristine" class="error">
+                            First Name is required
+                        </div>
+                        <div [hidden]="email.valid || email.pristine" class="error">
+                               Email is required
+                         </div>
+                    </div>
+
+                    <div class="last_name">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Last Name</mat-label>
+                            <div class="input-filter">
+                                <input matInput required name="last_name" [(ngModel)]="user.person.last_name" #last_name="ngModel">
+                            </div>
+                        </mat-form-field>
+                        <div [hidden]="last_name.valid || last_name.pristine" class="error">
+                            Last name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="details">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <div class="input-filter">
+                            <input matInput required [value]="user.person.email" name="email" [(ngModel)]="user.person.email" #email="ngModel">
+                        </div>
+                    </mat-form-field>
+
+
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Gender</mat-label>
+                        <div class="input-filter">
+                            <input matInput (input)="onEdit($event.target.value)" [value]="user.person.gender">
+                        </div>
+                    </mat-form-field>
+
+                </div>
+                <h3>Address</h3>
+                <div class="address">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Address</mat-label>
+                        <div class="input-filter">
+                            <input matInput (input)="onEdit($event.target.value)" [value]="user.person.address">
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="city">
+                    <mat-form-field appearance="fill">
+                        <mat-label>City </mat-label>
+                        <div class="input-filter">
+                            <input matInput (input)="onEdit($event.target.value)" placeholder="city">
+                        </div>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>zip code</mat-label>
+                        <div class="input-filter">
+                            <input matInput [value]="user.person.zip_code">
+                        </div>
+                    </mat-form-field>
+                </div>
+                
+                <button  class="submit-btn" mat-raised-button type="submit" color="primary" 
+                 [disabled]="!heroForm.form.valid"
+                 (mouseenter)="$event.stopImmediatePropagation()" 
+                 (mouseleave)="$event.stopImmediatePropagation()" 
+                 >
+                <mat-icon>save</mat-icon>Save</button>
+            </form>
+        </mat-card>
+
+    </div>
+    <div class="order-history">
+        <mat-card>
+            <h3>History</h3>
+            <mat-form-field appearance="fill" class="custom-width">
+                <mat-label>Order no</mat-label>
+                <input matInput readonly [value]="user.person.order.order_no">
+            </mat-form-field>
+
+            <div class="price">
+                <mat-form-field appearance="fill">
+                    <mat-label>Price</mat-label>
+                    <input matInput readonly [value]="user.person.order.total | currency">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Units</mat-label>
+                    <input matInput readonly [value]="user.person.order.units">
+                </mat-form-field>
+            </div>
+
+        </mat-card>
+    </div>
+</div>

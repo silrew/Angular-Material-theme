@@ -1,0 +1,152 @@
+<div class="wrapper" [class.dark-theme]="isDarkTheme">
+<mat-toolbar color="primary">
+    <div class="left-nav">
+        <span class="menu-icon">
+            <button mat-flat-button color="primary" *ngIf="isScreenSmall()" (click)="sidenav.toggle()">
+                <mat-icon>dehaze</mat-icon>
+            </button>
+            <button mat-flat-button color="primary" *ngIf="!isScreenSmall()" (click)="show_text= !show_text">
+                <mat-icon>dehaze</mat-icon>
+            </button>
+        </span>
+    </div>
+    <div class="mid-nav">~Admin Galore~</div>
+    <div class="right-nav">
+        <span id="th-btn">
+            <button mat-flat-button *ngIf="!isDarkTheme"
+            (click)="isDarkTheme=true" color="warn"> Dark theme</button>
+            <button mat-flat-button *ngIf="isDarkTheme"
+            (click)="isDarkTheme=false" color="warn"> Light theme</button>
+           
+           <!--  <mat-icon style="cursor:pointer;">person</mat-icon>
+        
+          TODO
+        -->
+        </span>
+    </div>
+</mat-toolbar> 
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
+        <ul  [ngClass]="{'w-60':!show_text}">
+
+            <li><a [routerLink]="['dashboard']" routerLinkActive="active-link">
+                <button mat-flat-button  disableRipple style="background-color: inherit;width:100%" 
+                 [ngClass]="{'p-collapsed-button':!show_text }">
+                    <span class="icon">
+                    <mat-icon>dashboard</mat-icon>
+                    </span>
+                    <span *ngIf="show_text" class="nav-item-text">Dashboard</span>
+                </button>
+            </a>
+            <mat-divider></mat-divider>
+            </li>
+            <li>
+                <mat-expansion-panel  hideToggle  [ngClass]="{'small-button':!show_text}" (opened)="showSalestoggle = true" (closed)="showSalestoggle=false">
+                    <mat-expansion-panel-header expandedHeight="32px" 
+                    [ngClass]="{ 'p-collapsed-header':!show_text }">
+                        <mat-panel-title>
+                            <button mat-flat-button disableRipple style="background-color:inherit"
+                            [ngClass]="{'small-button':!show_text}">
+                                <span class="icon">
+                                    <mat-icon  *ngIf="!showSalestoggle && show_text">attach_money</mat-icon>
+                                    <mat-icon  style="margin-left:12px;" *ngIf="!show_text">attach_money</mat-icon>
+                                </span>
+                                <span *ngIf="show_text" class="nav-item-text">Sales</span>
+                            </button>
+                        </mat-panel-title>
+                        <mat-panel-description></mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <ul>
+                     <li>
+                         <a [routerLink]="['orders']" routerLinkActive="active-link">
+                        <button class="sub-menu"
+                         mat-flat-button style="background-color:inherit;width:100%;"
+                         [ngClass]="{'small-button':!show_text}">
+                            <span class="icon">
+                                <mat-icon>attach_money</mat-icon>
+                            </span>
+                            <span *ngIf="show_text" class="nav-text" matTooltip="Orders" [matTooltipDisabled]="show_text">Orders &nbsp;&nbsp;    </span>
+                        </button>
+                    </a> 
+                    </li> 
+                    <li> <a [routerLink]="['orders']" routerLinkActive="active-link">
+                        <button mat-flat-button class="sub-menu" style="background-color:inherit;width:100%;"
+                        [ngClass]="{'small-button':!show_text}">
+                            <span class="icon">
+                                <mat-icon>library_books</mat-icon>
+                            </span>
+                            <span *ngIf="show_text" class="nav-text">Invoices</span>
+                       
+                        </button> </a>
+                      
+                    </li>
+                 
+        </ul>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>  
+        </li>
+        <li> 
+                <!-- [hideToggle]="!showToggle" -->
+            <mat-expansion-panel  hideToggle
+            [ngClass]="{'small-button':!show_text}" (opened)="showToggle = true" (closed)="showToggle=false">
+                <mat-expansion-panel-header expandedHeight="32px"
+                [ngClass]="{'p-collapsed-header':!show_text }">
+                    <mat-panel-title>
+                         <button mat-flat-button disableRipple style="background-color:inherit;width:100%;">
+                            <span class="icon">
+                                <mat-icon *ngIf="!showToggle">photo_library</mat-icon>
+                            </span>
+                            <span *ngIf="show_text" class="nav-text">Catalog</span>
+                        </button>
+                    </mat-panel-title>
+                    <mat-panel-description></mat-panel-description>
+                    <mat-divider></mat-divider>
+                </mat-expansion-panel-header>
+                <ul>
+               
+                <li>
+                        <a [routerLink]="['/posters']" routerLinkActive="active-link">
+                    <button class="sub-menu" mat-flat-button style="background-color:inherit; width:100%;"
+                    [ngClass]="{'small-button':!show_text}">
+                        <span class="icon">
+                            <mat-icon>photo_library</mat-icon>
+                        </span>
+                        <span *ngIf="show_text" class="nav-text">Posters</span>
+                    </button>
+                </a>
+                  </li>
+                <li>
+                    <a [routerLink]="['/categories']" routerLinkActive="active-link">
+                    <button mat-flat-button class="sub-menu" style="background-color:inherit;width:100%;" 
+                    [ngClass]="{'small-button':!show_text}">
+                        <span class="icon">
+                            <mat-icon>bookmark</mat-icon>
+                        </span>
+                        <span *ngIf="show_text" class="nav-text">Categories</span>
+                    </button>
+                </a>
+                    
+                </li>
+             
+    </ul>
+    </mat-expansion-panel>
+    <mat-divider></mat-divider>
+    </li>
+
+    <li><a [routerLink]="['/customers']" routerLinkActive="active-link">
+              <button mat-flat-button disableRipple style="background-color:inherit;width:100%;"
+              [ngClass]="{'p-collapsed-button':!show_text }">
+                        <span class="icon">
+                            <mat-icon>group</mat-icon>
+                        </span>
+                        <span *ngIf="show_text" class="nav-text">Customers</span>
+                    </button>
+                </a>
+                    <mat-divider></mat-divider>
+</li>
+        </ul>
+    </mat-sidenav>
+    <mat-sidenav-content [ngClass]="{'w-collapsed':!show_text, 'w-extended':show_text}"><router-outlet></router-outlet></mat-sidenav-content>
+</mat-sidenav-container>
+</div>

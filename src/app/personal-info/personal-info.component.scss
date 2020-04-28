@@ -1,0 +1,70 @@
+.user-details, .stats, .details, .city , .price{
+    display: flex;
+    justify-content: space-between;
+    }
+ .user-details{
+   padding: 1em;  
+ } 
+ .first-name, .last_name {
+     margin: 0;
+     padding: 0;
+     width: 100%;
+ }  
+ .last_name{
+     margin-left: 1em;
+ }
+.personal-info {
+    width: 75%;
+}
+.order-history {
+    width: 24%;
+}
+ .city mat-form-field    {
+width: 45%;
+}
+.stats  mat-form-field {
+    width:90%;
+}
+.details mat-form-field:nth-child(1) {
+    width: 70%;
+}
+.details mat-form-field:nth-child(2){
+    width: 22%;
+}
+.price mat-form-field {
+    width: 45%;
+}
+.address  mat-form-field{
+    width: 70%;
+}
+.submit-btn mat-icon {
+    color:white; 
+    margin-right:8px;
+}
+.mat-raised-button[disabled], button:disabled {
+    cursor: no-drop;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+.custom-width{
+    width: -webkit-fill-available;
+}
+@media (max-width: 1080px) {
+    .user-details{
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+    }
+    .personal-info {
+        width: 100%;
+        margin-top: 1em;
+    }
+    .order-history {
+        width: 100%;
+        order: -1;
+    }
+    
+}

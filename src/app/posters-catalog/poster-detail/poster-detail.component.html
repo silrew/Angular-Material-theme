@@ -1,0 +1,67 @@
+<mat-tab-group>
+    <mat-tab label="Image">
+        <div class="image-tab">
+            <div class="image-container">
+                <img src={{poster.url}}>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Image</mat-label>
+                <input matInput value="inputValue" [(ngModel)]="inputValue" required>
+            </mat-form-field>
+            <div class="error-msg" *ngIf="!inputValue">
+                Image url is required
+            </div>
+            <div class="save-btn">
+                <button class="submit-btn" mat-raised-button type="submit" color="primary" [disabled]="isdisabled" (click)="onChnage($event.target.value)">
+                    <mat-icon>save</mat-icon>Save
+                </button>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Details">
+        <mat-card>
+        <div class="details">
+                <div class="category">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Category</mat-label>
+                            <input matInput value="{{poster.category}}">
+                        </mat-form-field>
+                    </div>
+                    <div class="dimensions">
+                        <div class="length">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Length</mat-label>
+                                <input matInput value="{{poster.length}} cm">
+                            </mat-form-field>
+                        </div>
+                        <div class="width">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Width</mat-label>
+                                <input matInput value="{{poster.length}} cm">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Price</mat-label>
+                            <input matInput value="{{poster.price | currency}}">
+                        </mat-form-field>
+                    </div>
+                    <div class="stock">
+                        <div class="no_stock">
+                                <mat-form-field appearance="fill">
+                                        <mat-label>Stock</mat-label>
+                                        <input matInput value="{{poster.stock }}">
+                                    </mat-form-field>
+                        </div>
+                       
+                                <button class="submit-btn" mat-raised-button type="submit" color="primary" [disabled]="isdisabled" (click)="onChnage($event.target.value)">
+                                    <mat-icon>save</mat-icon>Save
+                                </button>
+                            
+
+                    </div>
+        </div>
+    </mat-card>
+    </mat-tab>
+</mat-tab-group>

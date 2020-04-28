@@ -1,0 +1,95 @@
+<div class="outer-wrapper">
+
+<div class="admin-wrapper">
+        <mat-card>
+                <img class="admin-pic" src="https://images.pexels.com/photos/2269872/pexels-photo-2269872.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+                <div class="admin-text">
+                    <h2>Welcome to Anglar Admin  Demo</h2>
+                    <p>
+                        This is the admin of an imaginary poster shop. Feel free to explore and modify the data - it's local to your computer, and will reset each time you reload.
+                    </p>
+                </div>
+            </mat-card> 
+    <div class="cards-top">
+        <mat-card>
+                <div class="dashboard-card">
+                    <div class="icon">
+                        <mat-icon>attach_money</mat-icon>
+                    </div>
+                    <div class="text-wrapper">
+                        <div class="text">Monthly</div>
+                        <div class="text">Revenue</div>
+                        <div class="num-text">$3473.68</div>
+                    </div>
+                </div>
+            </mat-card>
+        
+            <mat-card>
+                <div class="dashboard-card">
+                    <div class="icon">
+                        <mat-icon>shopping_cart</mat-icon>
+                    </div>
+                    <div class="text-wrapper">
+                        <div class="text">New Orders</div>
+                        <div class="num-text">21</div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+
+    
+</div>
+
+
+<div class="container">
+    
+    <mat-card>
+        <div class="dashboard-card">
+            <div class="icon">
+                <mat-icon>message</mat-icon>
+            </div>
+            <div class="text-wrapper">
+                <div class="text">Pending</div>
+                <div class="text">Reviews</div>
+                <div class="num-text">4</div>
+            </div>
+        </div>
+        <div class="spacer" style="height:15px;"></div>
+        <mat-divider></mat-divider>
+        <div class="pending-review" *ngFor="let review of reviews">
+            <div class="profile-pic">
+                <img [src]="review.profile_pic">
+            </div>
+            <div class="review">
+                <div class="rating"><app-rating [rating]="review.rating"></app-rating></div>
+                <div class="text">{{review.text}}</div>
+            </div>
+        </div>
+    </mat-card>
+
+    <mat-card>
+        <div class="dashboard-card">
+            <div class="icon">
+                <mat-icon>person</mat-icon>
+            </div>
+            <div class="text-wrapper">
+                <div class="text">New</div>
+                <div class="text">Customers</div>
+                <div class="num-text">5</div>
+            </div>
+        </div>
+        <div class="spacer" style="height:15px;"></div>
+        <mat-divider></mat-divider>
+        <div class="pending-review" *ngFor="let customer of new_customers">
+            <div class="profile-pic">
+                <img [src]="customer.profile_pic">
+            </div>
+            <div class="review">
+                <div class="text">{{customer.name}}</div>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+</div>
+

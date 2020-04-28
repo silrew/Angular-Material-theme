@@ -1,0 +1,50 @@
+th {
+    vertical-align: middle;
+   }
+a:active{
+    text-decoration: none;
+    color: purple;
+}
+table {
+    margin: auto;
+    width: 100% !important;
+    min-width: 700px;
+    overflow-x: scroll;
+     }
+    tr, .mat-table, .mat-header-row , .mat-row {
+        width:100%;
+    } 
+a.text {
+  text-decoration: none;
+}
+td.text-id {
+    flex: 0 0 9% !important;
+    width: 9% !important;
+  white-space: unset !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+    
+}
+td.text-turncate {
+    word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 28% !important;
+  width: 28% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+td, th {
+    width: 14.2%;
+}
+.wrapper{
+    padding: 1em;
+}

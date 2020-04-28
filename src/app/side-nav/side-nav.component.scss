@@ -1,0 +1,127 @@
+mat-toolbar{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .spacer{
+   display:inline-block;
+   width: 25px;
+  }
+  .mat-sidenav-container{
+    height: 100vh;
+    overflow-x: inherit;
+  }
+   .sub-menu{
+     display:block ;
+     width: 133px;
+   }
+   #th-btn button.mat-flat-button {
+     width: 100px;
+   }
+   .menu-icon button.mat-flat-button:active {
+    //  transform: rotate(360deg);
+    //  transition: 0.2s;
+   }
+   ul{
+       padding: 0;
+       margin: 0;
+       text-align: -webkit-center;
+   }
+   li{
+       list-style: none;
+   }
+  //  li:hover{
+  //   background-color:rgba(0,0,0,.04);
+  //  }
+   .row{
+         position: relative;
+      right: -24px;
+   }
+   li a:hover {
+    background-color: rgba(0,0,0,.02);
+   }
+   li a {
+     text-decoration: none;
+     display:inline-block;
+     width:115%;
+     position: relative;
+     //padding: 8px 0px;
+   }
+  //  ul li:nth-child(1) a mat-icon {
+  //   margin-right: 115px;
+  //  }
+  //  ul li:nth-child(1) a .nav-item-text {
+  //   position: absolute;
+  //   right: 22%
+  //  }
+   .nav-item-text{
+     //margin-left:12px;
+     font-size:18px;
+   }
+   .mat-drawer-inner-container {
+     overflow: inherit;
+   }
+   .icon{
+     margin-right:12px;
+   }
+   .menu-icon button.mat-flat-button{
+     width:68px;
+   }
+   ul li button, button.mat-flat-button {
+     width: 200px; 
+     height: 48px;
+     display:flex;  
+     justify-content: space-between;
+   }  
+    .indicator-visible {
+     width: 183px;
+   }
+   .mat-expansion-panel:not([class*=mat-elevation-z]){
+     box-shadow: unset;
+   }
+   .small-button {
+     width:80px;
+     padding:0;
+     margin:0;
+       }
+       mat-expansion-panel-header {
+         padding:0 !important;
+       }
+   button.sub-menu.mat-flat-button.mat-button-base {
+     padding:0
+   }
+   .p-collapsed-header { padding-left:0px}
+   .p-collapsed-button{ padding-left:14px !important}
+   .w-60 {
+     width: 60px;
+   }
+   .w-collapsed { 
+     margin-left: 61px !important;
+      }
+   .W-extended {
+    margin-left: 296px;
+   }
+   .mat-expansion-indicator::after {
+    margin-right: 21px;
+   }
+   .mat-expansion-panel-header.mat-expansion-toggle-indicator-before .mat-expansion-indicator{
+    margin: 0 16px 0 19px;
+    margin-left: 19px !important;
+   }  
+   .nav-text{
+     margin-right:12px;
+     text-align: left;
+     font-size:18px;
+   }
+  .active-link{
+    background-color: lightgray;
+  }
+  a{
+    text-decoration: none;
+  }
+  // .mat-expansion-panel-header{
+  //   margin-left: 21px;
+  // }
+  // .mat-expansion-panel-header-title{
+  //   margin-right:0px;
+  // }

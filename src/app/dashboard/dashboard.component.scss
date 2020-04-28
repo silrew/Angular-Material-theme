@@ -1,0 +1,119 @@
+.container {
+    padding: 2px;
+}
+.dashboard-card {
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+ }
+ .text {
+     margin-top: 10px;
+ }
+ .num-text {
+     margin-top: 8px;
+     font-weight: bold;
+     font-size: large;
+     color: black;
+ }
+ .icon{
+     background-color: blue;
+     width: 80px;
+     height: 80px;
+     line-height: 80px;
+     color: white;
+     font-size: 32px;
+     text-align: -webkit-left;
+     border-radius: 3px;
+     box-shadow: 0px 3px gray;
+     margin-top: -32px;
+ }
+ .text-wrapper{
+     margin-left: 3px;
+ }
+  .mat-card:nth-child(2) .icon {
+    background-color: orange;
+  }
+  .mat-card:nth-child(3) .icon {
+    background-color: red;
+  }
+  .mat-card:nth-child(4).icon {
+    background-color: green;
+  }
+ .mat-card {
+    margin-top: 40px;
+    }
+    .mat-icon{
+        margin-left: 11px;
+        margin-top: 9px;
+        font-size: 60px;
+     
+    }
+   .pending-review {
+       padding: 12px;
+       display: flex;
+       justify-content: space-between;
+   } 
+   img{
+       height:30px;
+       width:30px;
+       border-radius: 50%;
+       margin-right: 20px;
+   }
+   .review {
+       color:gray;
+       font-size: small;
+       margin-top: -2px;
+       width:80%;
+   }
+img.admin-pic{
+    width: 100%;
+    height: 350px;
+    border-radius: 2px;
+}
+
+@media (min-width: 800px) {
+    .container{
+        display: flex;
+        width: 50%;
+         }
+    .container .mat-card {
+           margin-right: 10px;
+    }
+    .mat-card{
+        width: 50%;
+    }
+.outer-wrapper{
+    display: flex;
+   }
+.admin-wrapper {
+    width: 50%;
+    display: flex;
+   flex-direction: column;
+    margin-left: 10px;
+    .mat-card{      
+           margin-right: 10px;
+    }
+}
+.admin-wrapper>.mat-card{
+    order: 2;       
+    width: 100%;
+    margin-right: 10px;
+}
+.cards-top{
+    display: flex;
+}
+}
+
+@media (max-width: 1080px) {
+    .dashboard-card{
+        display: inline-block;
+    }
+    .admin-wrapper{
+       
+    }
+}
+
+
+
+
+   
